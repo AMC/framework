@@ -1,0 +1,5 @@
+Names
+  easydev
+  easydevframework
+  simpledev
+  quickdev

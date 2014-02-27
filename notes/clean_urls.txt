@@ -1,0 +1,137 @@
+.htaccess
+  requires rewrite module
+  uses regular expression
+  *** use urls as namespacing
+    ex) <user>/<repo>/<feature> instead of <feature>/<user>/<repo>
+  underscores are bad, use dashes
+  design urls for humans
+  index file loads by default, cannot use interface.php as launch point
+  use REST methods instead of Browser?
+   YES! because no conflict over GET anymore!
+    Create  / POST
+    Read    / GET
+    Update  / PUTS
+    Delete  / DELETE
+  
+  rule syntax
+    RewriteRule <pattern> <substitution> [flags]
+    RewriteCond <test> <condition>
+    RewriteMap <map> <path>
+   
+  flags
+    forbidden   403 forbidden
+    gone        410 gone
+    nocase      pattern is case-insensitive
+    next        loop back to the first rule
+    skip=N      skip the following N rules
+  
+  Misc
+    -f          file
+    -d          directory
+  
+  Variables encapsulated in: 
+    %{VAR_NAME}
+  The rule is that mod_rewrite steps through each rewrite rule in turn until one matches or no rules are left.
+  
+  
+  HTTP Header variables
+    HTTP_USER_AGENT
+    HTTP_REFERER
+    HTTP_COOKIE
+    HTTP_FORWARDED
+    HTTP_HOST
+    HTTP_PROXY_CONNECTION
+    HTTP_ACCEPT
+
+  Connection and Request Variables
+    REMOTE_ADDR
+    REMOTE_HOST
+    REMOTE_USER
+    REMOTE_IDENT
+    REQUEST_METHOD
+    SCRIPT_FILENAME
+    PATH_INFO
+    QUERY_STRING
+    AUTH_TYPE
+  
+  Server Internal Variables
+    DOCUMENT_ROOT
+    SERVER_ADMIN
+    SERVER_NAME
+    SERVER_ADDR
+    SERVER_PORT
+    SERVER_PROTOCOL
+    SERVER_SOFTWARE
+    
+  System Variables
+    TIME_YEAR
+    TIME_MON
+    TIME_DAY
+    TIME_HOUR
+    TIME_MIN
+    TIME_SEC
+    TIME_WDAY
+    TIME
+    
+  mod_rewrite variables
+    API_VERSION
+    THE_REQUEST
+    REQUEST_URI
+    REQUEST_FILENAME
+    IS_SUBREQ
+  
+  Disable hot linking images example:
+    RewriteCond %{HTTP_REFERER} !^$  
+    RewriteCond %{HTTP_REFERER} !^http://localhost/.*$ [OR,NC]  
+    RewriteCond %{HTTP_REFERER} !^http://mysite.com/.*$ [OR,NC]  
+    RewriteCond %{HTTP_REFERER} !^http://www.mysite.com/.*$ [OR,NC]  
+    RewriteRule .*.(gif|GIF|jpg|JPG)$ http://mysite/images/bad.gif [L,R]
+    
+  RewriteMap example:
+    RewriteMap categories txt:/path/to/file/categoryids.txt    
+    RewriteRule ^(.*)$ open.php?categoryid=${categories:$1|0}
+    
+  Prefix example:
+    RewriteCond %{HTTP_HOST} !^mydomain.com [NC]
+    RewriteRule ^/?(.*)$ http://mydomain.com/$1 [L,R=301]
+  Use similar to guarantee HTTPS!
+  
+  PRIMARY REFERENCES:
+    ** http://codeblow.com/questions/deny-ajax-file-access-using-htaccess/
+    * http://www.sitepoint.com/guide-url-rewriting/
+    http://www.cheatography.com/davechild/cheat-sheets/mod-rewrite/
+    http://www.askapache.com/htaccess/mod_rewrite-variables-cheatsheet.html
+    http://borkweb.com/story/apache-rewrite-cheatsheet
+    * http://www.port80software.com/support/articles/nextgenerationurls
+    http://www.nngroup.com/articles/url-as-ui/
+    http://www.isoc.org/inet95/proceedings/PAPER/016/html/paper.html
+    http://www.w3.org/Provider/Style/URI
+    http://www.sitepoint.com/domain-www-or-no-www/
+    * http://warpspire.com/posts/url-design/
+    http://askubuntu.com/questions/48362/how-to-enable-mod-rewrite-in-apache
+    http://www.askapache.com/htaccess/modrewrite-tips-tricks.html
+    http://www.askapache.com/htaccess/crazy-advanced-mod_rewrite-tutorial.html
+    http://www.sitepoint.com/apache-mod_rewrite-examples-2/
+    http://www.w3schools.com/ajax/ajax_xmlhttprequest_send.asp
+    
+  
+  SECONDARY REFERENCES:
+    http://en.wikipedia.org/wiki/Clean_URL
+    http://en.wikipedia.org/wiki/Semantic_URL
+    http://en.wikipedia.org/wiki/Cool_URIs_don%27t_change
+    http://www.contentwithstyle.co.uk/content/clean-urls-for-a-better-search-engine-ranking/
+    http://httpd.apache.org/docs/2.0/misc/rewriteguide.html
+    http://httpd.apache.org/docs/current/mod/mod_rewrite.html
+    http://httpd.apache.org/docs/current/mod/core.html#allowoverride
+    http://manpages.ubuntu.com/manpages/natty/en/man8/a2enmod.8.html
+    
+  Install mod_rewrite:
+    sudo a2enmod rewrite
+    sudo nano /etc/apache2/sites-available/default
+      <Directory /var/www/>
+        ...
+        AllowOverride FileInfo
+        ...
+      </Directory>
+    sudo /etc/init.d/apache2 restart
+    

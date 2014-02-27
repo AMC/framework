@@ -1,0 +1,268 @@
+02-26 11:40:41: api.php: 
+REDIRECT_STATUS => 200 
+HTTP_HOST => 192.168.56.102 
+HTTP_CONNECTION => keep-alive 
+CONTENT_LENGTH => 5 
+HTTP_CACHE_CONTROL => no-cache 
+HTTP_PRAGMA => no-cache 
+HTTP_ORIGIN => http://192.168.56.102 
+HTTP_X_REQUESTED_WITH => XMLHttpRequest 
+CONTENT_TYPE => application/x-www-form-urlencoded; charset=UTF-8 
+HTTP_ACCEPT => */* 
+HTTP_USER_AGENT => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36 
+HTTP_REFERER => http://192.168.56.102/framework/ 
+HTTP_ACCEPT_ENCODING => gzip,deflate,sdch 
+HTTP_ACCEPT_LANGUAGE => en-US,en;q=0.8 
+PATH => /usr/local/bin:/usr/bin:/bin 
+SERVER_SIGNATURE => <address>Apache/2.2.22 (Ubuntu) Server at 192.168.56.102 Port 80</address>
+ 
+SERVER_SOFTWARE => Apache/2.2.22 (Ubuntu) 
+SERVER_NAME => 192.168.56.102 
+SERVER_ADDR => 192.168.56.102 
+SERVER_PORT => 80 
+REMOTE_ADDR => 192.168.56.1 
+DOCUMENT_ROOT => /var/www 
+SERVER_ADMIN => webmaster@localhost 
+SCRIPT_FILENAME => /var/www/framework/api.php 
+REMOTE_PORT => 60796 
+REDIRECT_URL => /framework/ 
+GATEWAY_INTERFACE => CGI/1.1 
+SERVER_PROTOCOL => HTTP/1.1 
+REQUEST_METHOD => DELETE 
+QUERY_STRING =>  
+REQUEST_URI => /framework/ 
+SCRIPT_NAME => /framework/api.php 
+PHP_SELF => /framework/api.php 
+REQUEST_TIME => 1393443641 
+
+
+
+02-26 11:57:02: api.php: 
+REDIRECT_STATUS => 200 
+HTTP_HOST => 192.168.56.102 
+HTTP_CONNECTION => keep-alive 
+CONTENT_LENGTH => 5 
+HTTP_CACHE_CONTROL => no-cache 
+HTTP_PRAGMA => no-cache 
+HTTP_ORIGIN => http://192.168.56.102 
+HTTP_X_REQUESTED_WITH => XMLHttpRequest 
+CONTENT_TYPE => application/x-www-form-urlencoded; charset=UTF-8 
+HTTP_ACCEPT => */* 
+HTTP_USER_AGENT => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36 
+HTTP_REFERER => http://192.168.56.102/framework/ 
+HTTP_ACCEPT_ENCODING => gzip,deflate,sdch 
+HTTP_ACCEPT_LANGUAGE => en-US,en;q=0.8 
+PATH => /usr/local/bin:/usr/bin:/bin 
+SERVER_SIGNATURE => <address>Apache/2.2.22 (Ubuntu) Server at 192.168.56.102 Port 80</address>
+ 
+SERVER_SOFTWARE => Apache/2.2.22 (Ubuntu) 
+SERVER_NAME => 192.168.56.102 
+SERVER_ADDR => 192.168.56.102 
+SERVER_PORT => 80 
+REMOTE_ADDR => 192.168.56.1 
+DOCUMENT_ROOT => /var/www 
+SERVER_ADMIN => webmaster@localhost 
+SCRIPT_FILENAME => /var/www/framework/api.php 
+REMOTE_PORT => 60906 
+REDIRECT_URL => /framework/ 
+GATEWAY_INTERFACE => CGI/1.1 
+SERVER_PROTOCOL => HTTP/1.1 
+REQUEST_METHOD => DELETE 
+QUERY_STRING =>  
+REQUEST_URI => /framework/ 
+SCRIPT_NAME => /framework/api.php 
+PHP_SELF => /framework/api.php 
+REQUEST_TIME => 1393444622 
+
+
+
+02-26 12:02:25: api.php: 
+REDIRECT_STATUS => 200 
+HTTP_HOST => 192.168.56.102 
+HTTP_CONNECTION => keep-alive 
+HTTP_CACHE_CONTROL => no-cache 
+HTTP_ACCEPT => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8 
+HTTP_PRAGMA => no-cache 
+HTTP_USER_AGENT => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36 
+HTTP_ACCEPT_ENCODING => gzip,deflate,sdch 
+HTTP_ACCEPT_LANGUAGE => en-US,en;q=0.8 
+PATH => /usr/local/bin:/usr/bin:/bin 
+SERVER_SIGNATURE => <address>Apache/2.2.22 (Ubuntu) Server at 192.168.56.102 Port 80</address>
+ 
+SERVER_SOFTWARE => Apache/2.2.22 (Ubuntu) 
+SERVER_NAME => 192.168.56.102 
+SERVER_ADDR => 192.168.56.102 
+SERVER_PORT => 80 
+REMOTE_ADDR => 192.168.56.1 
+DOCUMENT_ROOT => /var/www 
+SERVER_ADMIN => webmaster@localhost 
+SCRIPT_FILENAME => /var/www/framework/api.php 
+REMOTE_PORT => 60930 
+REDIRECT_URL => /framework/ 
+GATEWAY_INTERFACE => CGI/1.1 
+SERVER_PROTOCOL => HTTP/1.1 
+REQUEST_METHOD => GET 
+QUERY_STRING =>  
+REQUEST_URI => /framework/ 
+SCRIPT_NAME => /framework/api.php 
+PHP_SELF => /framework/api.php 
+REQUEST_TIME => 1393444945 
+
+
+
+02-26 12:02:58: api.php: 
+REDIRECT_STATUS => 200 
+HTTP_HOST => 192.168.56.102 
+HTTP_CONNECTION => keep-alive 
+CONTENT_LENGTH => 5 
+HTTP_CACHE_CONTROL => no-cache 
+HTTP_PRAGMA => no-cache 
+HTTP_ORIGIN => http://192.168.56.102 
+HTTP_X_REQUESTED_WITH => XMLHttpRequest 
+CONTENT_TYPE => application/x-www-form-urlencoded; charset=UTF-8 
+HTTP_ACCEPT => */* 
+HTTP_USER_AGENT => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36 
+HTTP_REFERER => http://192.168.56.102/framework/ 
+HTTP_ACCEPT_ENCODING => gzip,deflate,sdch 
+HTTP_ACCEPT_LANGUAGE => en-US,en;q=0.8 
+PATH => /usr/local/bin:/usr/bin:/bin 
+SERVER_SIGNATURE => <address>Apache/2.2.22 (Ubuntu) Server at 192.168.56.102 Port 80</address>
+ 
+SERVER_SOFTWARE => Apache/2.2.22 (Ubuntu) 
+SERVER_NAME => 192.168.56.102 
+SERVER_ADDR => 192.168.56.102 
+SERVER_PORT => 80 
+REMOTE_ADDR => 192.168.56.1 
+DOCUMENT_ROOT => /var/www 
+SERVER_ADMIN => webmaster@localhost 
+SCRIPT_FILENAME => /var/www/framework/api.php 
+REMOTE_PORT => 60932 
+REDIRECT_URL => /framework/ 
+GATEWAY_INTERFACE => CGI/1.1 
+SERVER_PROTOCOL => HTTP/1.1 
+REQUEST_METHOD => DELETE 
+QUERY_STRING =>  
+REQUEST_URI => /framework/ 
+SCRIPT_NAME => /framework/api.php 
+PHP_SELF => /framework/api.php 
+REQUEST_TIME => 1393444978 
+
+
+
+02-26 12:05:11: api.php: 
+REDIRECT_STATUS => 200 
+HTTP_HOST => 192.168.56.102 
+HTTP_CONNECTION => keep-alive 
+CONTENT_LENGTH => 5 
+HTTP_CACHE_CONTROL => no-cache 
+HTTP_PRAGMA => no-cache 
+HTTP_ORIGIN => http://192.168.56.102 
+HTTP_X_REQUESTED_WITH => XMLHttpRequest 
+CONTENT_TYPE => application/x-www-form-urlencoded; charset=UTF-8 
+HTTP_ACCEPT => */* 
+HTTP_USER_AGENT => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36 
+HTTP_REFERER => http://192.168.56.102/framework/ 
+HTTP_ACCEPT_ENCODING => gzip,deflate,sdch 
+HTTP_ACCEPT_LANGUAGE => en-US,en;q=0.8 
+PATH => /usr/local/bin:/usr/bin:/bin 
+SERVER_SIGNATURE => <address>Apache/2.2.22 (Ubuntu) Server at 192.168.56.102 Port 80</address>
+ 
+SERVER_SOFTWARE => Apache/2.2.22 (Ubuntu) 
+SERVER_NAME => 192.168.56.102 
+SERVER_ADDR => 192.168.56.102 
+SERVER_PORT => 80 
+REMOTE_ADDR => 192.168.56.1 
+DOCUMENT_ROOT => /var/www 
+SERVER_ADMIN => webmaster@localhost 
+SCRIPT_FILENAME => /var/www/framework/api.php 
+REMOTE_PORT => 60941 
+REDIRECT_URL => /framework/ 
+GATEWAY_INTERFACE => CGI/1.1 
+SERVER_PROTOCOL => HTTP/1.1 
+REQUEST_METHOD => DELETE 
+QUERY_STRING =>  
+REQUEST_URI => /framework/ 
+SCRIPT_NAME => /framework/api.php 
+PHP_SELF => /framework/api.php 
+REQUEST_TIME => 1393445111 
+
+
+
+02-26 12:07:47: api.php: 
+REDIRECT_STATUS => 200 
+HTTP_HOST => 192.168.56.102 
+HTTP_CONNECTION => keep-alive 
+CONTENT_LENGTH => 5 
+HTTP_CACHE_CONTROL => no-cache 
+HTTP_PRAGMA => no-cache 
+HTTP_ORIGIN => http://192.168.56.102 
+HTTP_X_REQUESTED_WITH => XMLHttpRequest 
+CONTENT_TYPE => application/x-www-form-urlencoded; charset=UTF-8 
+HTTP_ACCEPT => */* 
+HTTP_USER_AGENT => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36 
+HTTP_REFERER => http://192.168.56.102/framework/ 
+HTTP_ACCEPT_ENCODING => gzip,deflate,sdch 
+HTTP_ACCEPT_LANGUAGE => en-US,en;q=0.8 
+PATH => /usr/local/bin:/usr/bin:/bin 
+SERVER_SIGNATURE => <address>Apache/2.2.22 (Ubuntu) Server at 192.168.56.102 Port 80</address>
+ 
+SERVER_SOFTWARE => Apache/2.2.22 (Ubuntu) 
+SERVER_NAME => 192.168.56.102 
+SERVER_ADDR => 192.168.56.102 
+SERVER_PORT => 80 
+REMOTE_ADDR => 192.168.56.1 
+DOCUMENT_ROOT => /var/www 
+SERVER_ADMIN => webmaster@localhost 
+SCRIPT_FILENAME => /var/www/framework/api.php 
+REMOTE_PORT => 60947 
+REDIRECT_URL => /framework/ 
+GATEWAY_INTERFACE => CGI/1.1 
+SERVER_PROTOCOL => HTTP/1.1 
+REQUEST_METHOD => POST 
+QUERY_STRING =>  
+REQUEST_URI => /framework/ 
+SCRIPT_NAME => /framework/api.php 
+PHP_SELF => /framework/api.php 
+REQUEST_TIME => 1393445267 
+
+
+
+02-26 12:07:56: api.php: 
+REDIRECT_STATUS => 200 
+HTTP_HOST => 192.168.56.102 
+HTTP_CONNECTION => keep-alive 
+CONTENT_LENGTH => 5 
+HTTP_CACHE_CONTROL => no-cache 
+HTTP_PRAGMA => no-cache 
+HTTP_ORIGIN => http://192.168.56.102 
+HTTP_X_REQUESTED_WITH => XMLHttpRequest 
+CONTENT_TYPE => application/x-www-form-urlencoded; charset=UTF-8 
+HTTP_ACCEPT => */* 
+HTTP_USER_AGENT => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36 
+HTTP_REFERER => http://192.168.56.102/framework/ 
+HTTP_ACCEPT_ENCODING => gzip,deflate,sdch 
+HTTP_ACCEPT_LANGUAGE => en-US,en;q=0.8 
+PATH => /usr/local/bin:/usr/bin:/bin 
+SERVER_SIGNATURE => <address>Apache/2.2.22 (Ubuntu) Server at 192.168.56.102 Port 80</address>
+ 
+SERVER_SOFTWARE => Apache/2.2.22 (Ubuntu) 
+SERVER_NAME => 192.168.56.102 
+SERVER_ADDR => 192.168.56.102 
+SERVER_PORT => 80 
+REMOTE_ADDR => 192.168.56.1 
+DOCUMENT_ROOT => /var/www 
+SERVER_ADMIN => webmaster@localhost 
+SCRIPT_FILENAME => /var/www/framework/api.php 
+REMOTE_PORT => 60951 
+REDIRECT_URL => /framework/ 
+GATEWAY_INTERFACE => CGI/1.1 
+SERVER_PROTOCOL => HTTP/1.1 
+REQUEST_METHOD => CREATE 
+QUERY_STRING =>  
+REQUEST_URI => /framework/ 
+SCRIPT_NAME => /framework/api.php 
+PHP_SELF => /framework/api.php 
+REQUEST_TIME => 1393445276 
+
+
+
