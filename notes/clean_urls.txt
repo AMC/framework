@@ -96,6 +96,9 @@
     RewriteRule ^/?(.*)$ http://mydomain.com/$1 [L,R=301]
   Use similar to guarantee HTTPS!
   
+  User .htaccess for generating method/action/etc?
+  
+  
   PRIMARY REFERENCES:
     ** http://codeblow.com/questions/deny-ajax-file-access-using-htaccess/
     * http://www.sitepoint.com/guide-url-rewriting/
@@ -113,6 +116,8 @@
     http://www.askapache.com/htaccess/crazy-advanced-mod_rewrite-tutorial.html
     http://www.sitepoint.com/apache-mod_rewrite-examples-2/
     http://www.w3schools.com/ajax/ajax_xmlhttprequest_send.asp
+    
+    http://en.wikipedia.org/wiki/XMLHttpRequest
     
   
   SECONDARY REFERENCES:

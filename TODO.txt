@@ -1,0 +1,2 @@
+move index.php to interface folder
+use environment variables for db username/password

@@ -1,0 +1,7 @@
+http://www.thebuzzmedia.com/designing-a-secure-rest-api-without-oauth-authentication/
+http://code.tutsplus.com/tutorials/creating-an-api-centric-web-application--net-23417 crosspost
+http://oauthbible.com/
+
+https://www.youtube.com/watch?v=6bR110r-RfY
+https://www.youtube.com/watch?v=FeSdFhsKGG0
+

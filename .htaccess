@@ -1,7 +1,7 @@
 RewriteEngine On
 
 RewriteCond %{HTTP:X-Requested-With} !^$
-RewriteRule ^(.*)$ api.php
+RewriteRule ^(.*)$ api/index.php
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

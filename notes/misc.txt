@@ -3,3 +3,13 @@ Names
   easydevframework
   simpledev
   quickdev
+  
+POST is bad, not immutable
+
+Find research paper for REST
+
+Resource/Content negotiation
+
+Use HEAD for API info?
+
+Response object that parses JSON depending on version
