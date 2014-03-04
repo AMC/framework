@@ -1,26 +1,93 @@
 <?php
 
-$filename = 'log/log.txt';
-$message  = "api.php: \n";
+  if (isset($_GET['action']))
+    $action = $_GET['action'];
+  else
+    $action = NULL;
+    
+  if (isset($_GET['property']))
+    $property = $_GET['property'];
+  else
+    $property = NULL;  
+    
+  if (isset($_GET['value']))
+    if ((string)(int) $_GET['value'] == $_GET['value'])
+      $value = (int)$_GET['value'];
+    else
+      $value = $_GET['value'];
+  else
+    $value = NULL;
 
-foreach ($_SERVER as $key => $value)
-  $message .= "$key => $value \n";
 
-file_put_contents($filename, date ('m-d H:i:s') . ": " . $message . "\n\n\n", FILE_APPEND);
+  $mongo = new MongoClient();
 
-echo "api.php\n";
-echo $_SERVER['REQUEST_METHOD'];
+  $db = $mongo->test;
 
-#TODO: authenticate
-#TODO: authorize
+  $users = $db->users;
+  
+?>
 
-require 'controller/controller.php';
+<a href='index.php'>reset</a>
+<br><br>
+<form action='index.php' method='get'>
+<input type='text' placeholder='init | reset | list | find' name='action' value='<?=$action?>'>
+<br>
+<input type='text' placeholder='property' name='property' value='<?=$property?>'>
+<br>
+<input type='text' placeholder='value' name='value' value='<?=$value?>'>
+<br>
+<input type='submit'>
+</form>
 
-$action = $_SERVER['REQUEST_METHOD'];
+<br><br>
+<pre>
+  
+<?php
 
-#try catch action
-Controller::$action();
+  if ($action == 'init') {
+    for ($i = 0; $i < 100; $i++) 
+      $response = $users->insert(array(
+        'name'   => "user{$i}",
+        'number' => $i,
+        'slug'   => $i,
+        
+      ));
+      print_r($response);
+  }
 
-#create Controller
-#create params
-#Controller::Method($params);
+
+  if ($action == 'reset') {
+    $response = $users->drop();
+    print_r($response);
+  }
+
+
+  if ($action == 'list') {
+    $cursor = $users->find();
+    
+    $result = array();
+
+    foreach ($cursor as $document) 
+      $result[] = $document;
+
+    echo json_encode($result, JSON_PRETTY_PRINT);
+      
+  }
+
+  if ($action == 'find' && !is_null($property) && !is_null($property)) {
+    $query = array("{$property}" => $value);
+    $cursor = $users->find($query);
+    $result = array();
+
+    foreach ($cursor as $document) 
+      $result[] = $document;
+
+    echo json_encode($result, JSON_PRETTY_PRINT);
+    
+    
+  }
+
+?>
+
+
+end

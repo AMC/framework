@@ -97,3 +97,33 @@ REQUEST_TIME => 1393888533
 
 
 
+03-04 11:57:33: api.php: 
+HTTP_HOST => 192.168.56.102 
+HTTP_CONNECTION => keep-alive 
+HTTP_ACCEPT => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8 
+HTTP_USER_AGENT => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36 
+HTTP_ACCEPT_ENCODING => gzip,deflate,sdch 
+HTTP_ACCEPT_LANGUAGE => en-US,en;q=0.8 
+PATH => /usr/local/bin:/usr/bin:/bin 
+SERVER_SIGNATURE => <address>Apache/2.2.22 (Ubuntu) Server at 192.168.56.102 Port 80</address>
+ 
+SERVER_SOFTWARE => Apache/2.2.22 (Ubuntu) 
+SERVER_NAME => 192.168.56.102 
+SERVER_ADDR => 192.168.56.102 
+SERVER_PORT => 80 
+REMOTE_ADDR => 192.168.56.1 
+DOCUMENT_ROOT => /var/www 
+SERVER_ADMIN => webmaster@localhost 
+SCRIPT_FILENAME => /var/www/framework/api/index.php 
+REMOTE_PORT => 49816 
+GATEWAY_INTERFACE => CGI/1.1 
+SERVER_PROTOCOL => HTTP/1.1 
+REQUEST_METHOD => GET 
+QUERY_STRING =>  
+REQUEST_URI => /framework/api/index.php 
+SCRIPT_NAME => /framework/api/index.php 
+PHP_SELF => /framework/api/index.php 
+REQUEST_TIME => 1393963053 
+
+
+
