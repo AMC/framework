@@ -46,6 +46,7 @@ class Controller
   
   
   private static function document() {
+    # TODO: only return methods user has permission to use
     $result = array();
     
     $reflectionClass = new ReflectionClass(get_called_class());
