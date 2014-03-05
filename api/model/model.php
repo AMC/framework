@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
 * 
@@ -6,6 +6,7 @@
 class Model
 {
   protected $id;
+  protected $slug;
   
   private $properties;
   private $reflectionClass;

@@ -1,5 +1,23 @@
 <?php
 
+include 'controller/controller.php';
+include 'model/model.php';
+
+if (isset($_SERVER['REQUEST_METHOD']))
+  $method = strtolower($_SERVER['REQUEST_METHOD']);
+else
+  $method = 'get';
+
+if (method_exists('Controller', $method))
+  Controller::$method();
+else
+  die("die!");
+  
+  
+die();
+echo "<pre>";
+print_r($_SERVER);
+
   if (isset($_GET['action']))
     $action = $_GET['action'];
   else
@@ -29,7 +47,7 @@
 
 <a href='index.php'>reset</a>
 <br><br>
-<form action='index.php' method='get'>
+<form action='index.php' method='post'>
 <input type='text' placeholder='init | reset | list | find' name='action' value='<?=$action?>'>
 <br>
 <input type='text' placeholder='property' name='property' value='<?=$property?>'>
