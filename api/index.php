@@ -1,7 +1,11 @@
 <?php
 
+include 'classes/log.php';
 include 'controller/controller.php';
 include 'model/model.php';
+
+$log = new Log("logs/log.txt");
+
 
 if (isset($_SERVER['REQUEST_METHOD']))
   $method = strtolower($_SERVER['REQUEST_METHOD']);
@@ -12,36 +16,34 @@ if (method_exists('Controller', $method))
   Controller::$method();
 else
   die("die!");
+
+
+
+if (isset($_GET['action']))
+  $action = $_GET['action'];
+else
+  $action = NULL;
   
+if (isset($_GET['property']))
+  $property = $_GET['property'];
+else
+  $property = NULL;  
   
-die();
-echo "<pre>";
-print_r($_SERVER);
-
-  if (isset($_GET['action']))
-    $action = $_GET['action'];
+if (isset($_GET['value']))
+  if ((string)(int) $_GET['value'] == $_GET['value'])
+    $value = (int)$_GET['value'];
   else
-    $action = NULL;
-    
-  if (isset($_GET['property']))
-    $property = $_GET['property'];
-  else
-    $property = NULL;  
-    
-  if (isset($_GET['value']))
-    if ((string)(int) $_GET['value'] == $_GET['value'])
-      $value = (int)$_GET['value'];
-    else
-      $value = $_GET['value'];
-  else
-    $value = NULL;
+    $value = $_GET['value'];
+else
+  $value = NULL;
 
 
-  $mongo = new MongoClient();
 
-  $db = $mongo->test;
+$mongo = new MongoClient();
 
-  $users = $db->users;
+$db = $mongo->test;
+
+$users = $db->users;
   
 ?>
 
