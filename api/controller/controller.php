@@ -17,7 +17,7 @@ class Controller
   {
     #getAll, getFirst, getLast
     #retrieve params from $_GET
-    echo "get";
+    echo "Controller::get<br>";
   }
   
   static function post()
@@ -26,7 +26,7 @@ class Controller
     # non-idempotent
     # create
     # partial update
-    echo "post";
+    echo "Controller::post<br>";
   }
   
   static function put(array $p, array $q=NULL) 
@@ -35,13 +35,13 @@ class Controller
     # idempotent
     # full replacement update
     # create if id is known
-    echo "put";
+    echo "Controller::put<br>";
   }
   
   static function delete() 
   {
     #retrieve params from ?
-    echo "delete";
+    echo "Controller::delete<br>";
   }
   
   

@@ -1,10 +1,14 @@
 <?php
 
 include 'classes/log.php';
+include 'classes/database.php';
+
 include 'controller/controller.php';
 include 'model/model.php';
 
 $log = new Log("logs/log.txt");
+$database = new Database("test");
+
 
 
 if (isset($_SERVER['REQUEST_METHOD']))
@@ -39,18 +43,31 @@ else
 
 
 
-$mongo = new MongoClient();
+#$mongo = new MongoClient();
+#$db = $mongo->test;
 
-$db = $mongo->test;
+#$users = $db->users;
+$collection = "users";
 
-$users = $db->users;
-  
+
+echo "action: " . $action . "<br>"; 
 ?>
+
+<style>
+  input {
+    width: 50%;
+  }
+</style>
+
+<hr>
+
+<?= $database->size($collection); ?> Entries
+<hr>  
 
 <a href='index.php'>reset</a>
 <br><br>
-<form action='index.php' method='post'>
-<input type='text' placeholder='init | reset | list | find' name='action' value='<?=$action?>'>
+<form action='index.php' method='get'>
+<input type='text' placeholder='init | reset | list | find | first | last | delete' name='action' value='<?=$action?>'>
 <br>
 <input type='text' placeholder='property' name='property' value='<?=$property?>'>
 <br>
@@ -66,45 +83,44 @@ $users = $db->users;
 
   if ($action == 'init') {
     for ($i = 0; $i < 100; $i++) 
-      $response = $users->insert(array(
+      $database->save("users", array(
         'name'   => "user{$i}",
         'number' => $i,
         'slug'   => $i,
-        
       ));
-      print_r($response);
   }
 
 
   if ($action == 'reset') {
-    $response = $users->drop();
-    print_r($response);
+    $database->drop($collection);
   }
 
 
   if ($action == 'list') {
-    $cursor = $users->find();
-    
-    $result = array();
-
-    foreach ($cursor as $document) 
-      $result[] = $document;
-
+    $result = $database->findAll($collection, "array");
     echo json_encode($result, JSON_PRETTY_PRINT);
-      
   }
 
   if ($action == 'find' && !is_null($property) && !is_null($property)) {
-    $query = array("{$property}" => $value);
-    $cursor = $users->find($query);
-    $result = array();
-
-    foreach ($cursor as $document) 
-      $result[] = $document;
-
+    $params = array("{$property}" => $value);
+    $result = $database->find($collection, "array", $params);
     echo json_encode($result, JSON_PRETTY_PRINT);
-    
-    
+  }
+  
+  if ($action == 'delete' && !is_null($property) && !is_null($property)) {
+    $params = array("{$property}" => $value);
+    $result = $database->delete($collection, $params);
+    echo json_encode($result, JSON_PRETTY_PRINT);
+  }
+  
+  if ($action == 'first'){
+    $result = $database->findFirst($collection, "array");
+    echo json_encode($result, JSON_PRETTY_PRINT);
+  }
+  
+  if ($action == 'last'){
+    $result = $database->findLast($collection, "array");
+    echo json_encode($result, JSON_PRETTY_PRINT);
   }
 
 ?>
