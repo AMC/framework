@@ -11,13 +11,16 @@ class Controller
     # return information about available commands
     # TODO: use PHPDoc style syntax for more information
     echo json_encode(self::document(), JSON_PRETTY_PRINT);
+    die();
   }
   
   static function get() 
   {
     #getAll, getFirst, getLast
     #retrieve params from $_GET
-    echo "Controller::get<br>";
+    #$result = $database->find($collection, "array", $params);
+    echo json_encode(Model::getAll());
+    die();
   }
   
   static function post()
@@ -42,6 +45,9 @@ class Controller
   {
     #retrieve params from ?
     echo "Controller::delete<br>";
+    parse_str(file_get_contents('php://input'), $params);
+    print_r($params);
+    $result = $database->delete($collection, $params);
   }
   
   

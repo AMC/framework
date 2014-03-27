@@ -68,4 +68,14 @@ class Model
     
   }
   
+  // Static Methods
+  static function getAll()
+  {
+    $database = new Database("test");
+    $collection = 'users';
+    return $database->findAll($collection, "array");
+  }
+  
+  // end Static Methods
+  
 }
