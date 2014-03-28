@@ -6,24 +6,30 @@
 class Controller
 {
   
-  static function options()
+  static function options($params)
   {
     # return information about available commands
     # TODO: use PHPDoc style syntax for more information
-    echo json_encode(self::document(), JSON_PRETTY_PRINT);
+    # TODO: check incoming request for:
+    #  list of all controllers
+    #  methods of a controller
+    #  model fields (for generating new/edit form)
+    #  permissions
+    #  all
+    echo json_encode(self::document(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     die();
   }
   
-  static function get() 
+  static function get($params) 
   {
     #getAll, getFirst, getLast
     #retrieve params from $_GET
     #$result = $database->find($collection, "array", $params);
-    echo json_encode(Model::getAll());
+    echo json_encode(Model::getAll(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     die();
   }
   
-  static function post()
+  static function post($params)
   {
     # retrieve params from $_POST
     # non-idempotent
@@ -32,7 +38,7 @@ class Controller
     echo "Controller::post<br>";
   }
   
-  static function put(array $p, array $q=NULL) 
+  static function put($params) 
   {
     # retrieve params from $_PUT
     # idempotent
@@ -41,7 +47,7 @@ class Controller
     echo "Controller::put<br>";
   }
   
-  static function delete() 
+  static function delete($params) 
   {
     #retrieve params from ?
     echo "Controller::delete<br>";

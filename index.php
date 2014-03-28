@@ -78,26 +78,56 @@
   </div>
 
     <div id='results' class='container'>
+      <?php print_r($_SERVER); ?>
+      
     </div>
   
 
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
   <script>
+    function createRequest() {
+      var uri = $("#uri").val()
+      var method = $("#method").val();
+      var controller = $("#controller").val();
+      var id = $("#id").val();
+      var action = $("#action").val();
+      var limit = $("#limit").val();
+      var skip = $("#skip").val();
+
+      var properties = [];        
+      var values = [];
+      
+      $(".properties").each(function() {
+        properties.push($(this).val());
+      });
+      
+      $(".values").each(function() {
+        values.push($(this).val());
+      });
+
+      data = new Object();
+      data.action = $("#action").val();
+      data.limit = $("#limit").val();
+      data.skip = $("#skip").val();
+      data.params = [];
+      for (i = 0; i < properties.length; i++) 
+        data.params[properties[i]] = values[i];
+      
+      //makeRequest(uri.concat("/", controller, "/", id), method, data);
+      makeRequest(controller.concat("/", id), method, data);
+    }
+  
     function makeRequest(uri, method, data) {
-      console.log("request");
-      console.log(uri);
-      console.log(method);
-      console.log(data)
-      console.log("...");
+      console.log("sent: ");
+      console.log(data);
       $.ajax({
         type: method,
         url: uri,
         data: data,
         success: function(data, status, xhr) {
-          //console.log(data);
-          console.log(status);
-          //console.log(xhr);
+          console.log("received: ");
+          console.log(data);
           $("#results").text(JSON.stringify(data, undefined, 2));
         },
       }); 
@@ -105,41 +135,7 @@
 
   
     $(document).ready(function(){
-      console.log("ready!");
-      
-      $("#btnRequest").on("click", function(){
-        console.log("click!");
-        
-        var uri = $("#uri").val()
-        var method = $("#method").val();
-        var controller = $("#controller").val();
-        var id = $("#id").val();
-        var action = $("#action").val();
-        var limit = $("#limit").val();
-        var skip = $("#skip").val();
-
-        var properties = [];        
-        var values = [];
-        
-        $(".properties").each(function() {
-          properties.push($(this).val());
-        });
-        
-        $(".values").each(function() {
-          values.push($(this).val());
-        });
-
-        data = new Object();
-        data.action = $("#action").val();
-        data.limit = $("#limit").val();
-        data.skip = $("#skip").val();
-        data.params = [];
-        for (i = 0; i < properties.length; i++) 
-          data.params[properties[i]] = values[i];
-        
-        makeRequest(uri.concat("/", controller, "/", id), method, data);
-        
-      }).focus();
+      $("#btnRequest").on("click", createRequest).focus();
     });
 
   </script>
