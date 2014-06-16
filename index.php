@@ -1,38 +1,44 @@
-<h3>Index.php</h3>
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-
-<script>
-  function makeRequest(method, msg) {
-    var url = "http://192.168.56.102/framework/";
-    
-    $.ajax({
-      type: method,
-      url: url,
-      data: msg,
-      success: function(data, status, xhr) {
-        console.log(data);
-        console.log(status);
-        console.log(xhr);
-      },
-    }); 
-  }
-
-</script>
-
 <pre>
+<?php
 
-<? print_r($_SERVER); ?>
-<?
-
-/*
-if (!in_array("mod_rewrite", apache_get_modules()))
-  die("mod_rewrite is not enabled.");
-
-
-
-phpinfo();
-
-
-if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest') {
-    die();
+function println($input, $separator = ", ") {
+  if (is_array($input))
+    echo implode($separator, $input) . PHP_EOL;
+  else
+    echo $input . PHP_EOL;
+  
+  echo PHP_EOL;
 }
+
+require_once 'config/includes.php';
+
+$m = new Model();
+
+
+println($m->getClass());
+println($m->getMethods(), "\n");
+print_r($m->getMethodParameters("setProperties"));
+
+println($m->getProperty("id"));
+
+print_r($m->getProperties());
+
+$m->setProperty("id", "world");
+println($m->getProperty("id"));
+
+$m->setProperties(array(
+  "id" => "Earth",
+  "group" => "not evil",
+  "cat" => "dog",
+));
+
+print_r($m->getProperties());
+
+$m->save();
+
+echo "<hr>";
+//print_r($m);
+
+
+echo "<hr>end";
+
