@@ -1,5 +1,4 @@
-<pre>
-<?php
+<?php header("Location: api/index.php"); ?>
 
 function println($input, $separator = ", ") {
   if (is_array($input))
