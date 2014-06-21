@@ -12,7 +12,7 @@ class ModelFactory {
   
   public function newModel($model, array $params) {
     // TODO: check if model exists
-    $model = new $model($params);
+    $model = new $model();
     $model->setDatabase($this->database);
     return $model;
   } // end function

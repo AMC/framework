@@ -2,40 +2,18 @@
 
 class Component extends ReflectiveObject {
   
-  protected $use_default_controller = true;
-  protected $type                   = 'String';
-  protected $required               = false;
-  protected $validation             = '/^(\w|\s)+$/';
+  protected $value      = NULL;
+  protected $type       = 'String';
+  protected $required   = false;
+  protected $validation = '/^(\w|\s)+$/';
   
-  protected $value;
-  protected $class;
-  
-  
-  // TODO: parameters as associative array
-  public function __construct($value) {
-    $this->value                  = $value;
+
+  public function __construct() {
+    $this->value = NULL;
+
   } // end __construct() function
-  
-  
-  public function setValue($value) {
-    $this->value = $value;
-  } // end function
-  
-  
-  public function setType($type) {
-    $this->type = $type;
-  } // end function
-  
-  
-  public function setRequired(boolean $required) {
-    $this->required = $required;
-  } // end function
-  
-  
-  public function setValidation($regex) {
-    $this->validation = $regex;
-  } // end function
-  
+
+  // getters and setters through reflective object  
   
   public function isValid() {
     if (is_null($this->validation))
@@ -49,5 +27,6 @@ class Component extends ReflectiveObject {
       
     return true;
   } // end function
+  
 
 }

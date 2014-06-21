@@ -30,15 +30,16 @@ class MongoDriver implements iDBDriver {
   
   public function save($table, $json) {
     // TODO: escape data: https://www.idontplaydarts.com/2010/07/mongodb-is-vulnerable-to-sql-injection-in-php-at-least/
-    $obj = json_decode($json);
-    if (is_null($obj->_id)) {
-      $obj->_id = new MongoId();
-      $this->database->$table->insert($obj);
+    $model = json_decode($json);
+    
+    if (is_null($model->_id)) {
+      $model->_id = new MongoId();
+      $this->database->$table->insert($model);
     } else {
-      $this->database->$table->save($obj);
+      $this->database->$table->save($model);
     } // end if-else
     
-    return $obj->_id;
+    return json_encode($model, JSON_PRETTY_PRINT);
   } // end function
   
   
@@ -50,9 +51,13 @@ class MongoDriver implements iDBDriver {
   public function find($table, array $predicates = array(), $limit = 10, $skip = 0, $sort = array('_id' => 1)) {
     $result = array();
     $cursor = $this->database->$table->find($predicates)->sort($sort)->skip($skip)->limit($limit);
-    foreach ($cursor as $c)
-      $result[] = new $c['class']($c);
-    return $result;
+    foreach ($cursor as $c) {
+      $model = new $c['class']();
+      $model->loadFromJson($c);
+      $result[] = $model;
+    }
+    print_r($result);
+    return json_encode($result, JSON_PRETTY_PRINT);
   } // end function
   
 } // end class
