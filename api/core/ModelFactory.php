@@ -18,8 +18,17 @@ class ModelFactory {
   } // end function
   
   
-  public function find($table, array $predicates = NULL, $limit = 10, $offset = NULL, $sort = NULL) {
+  public function find($model, $predicates = array(), $limit = 10, $offset = 0, $sort = array()) {
+    $result = array();
+    $json = $this->database->find($model, $predicates, $limit, $offset, $sort);
+    //print_r($json);
+    foreach(json_decode($json) as $doc) {
+      $model = new $doc->class();
+      $model->load(json_encode($doc), JSON_PRETTY_PRINT);
+      $result[] = $model;
+    } // end foreach
     
+    return $result;     
   } // end function
   
   

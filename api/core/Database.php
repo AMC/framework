@@ -6,22 +6,22 @@ class Database {
   
   public function __construct($driver) {
     $this->driver = $driver;
-  } // end __construct() function
+  } // end function
   
   
-  public function save($table, $json) {
-    return $this->driver->save($table, $json);
-  }
+  public function save($model, $json) {
+    return $this->driver->save($model, $json);
+  } // end function
   
   
-  public function delete($table, array $predicates) {
-    $this->driver->delete($table, $predicates);
-  }
+  public function delete($model, array $predicates) {
+    $this->driver->delete($model, $predicates);
+  } // end function
   
   
   public function find($table, array $predicates = NULL, $limit = 10, $offset = NULL, $sort = NULL) {
-    $this->driver->find($table, $predicates, $limit, $offset, $sort);
-  }
+    return $this->driver->find($table, $predicates, $limit, $offset, $sort);
+  } // end function
 
 
 }

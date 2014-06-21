@@ -7,6 +7,13 @@
 
 
 echo "<pre>";
+
+
+foreach ($model_factory->find("Model") as $m) {
+  echo "$m <hr>";
+  echo $m->isValid() . "<hr>"; 
+}
+/*
 $m = $model_factory->newModel("Model", array());
 
 echo $m;
@@ -21,10 +28,7 @@ else
 
 echo $m;
 //print_r($m);
-//$r = $database_driver->find('Model');
-//echo $r;
-
-//$m->delete();
+$m->delete();
 
 /*
 */

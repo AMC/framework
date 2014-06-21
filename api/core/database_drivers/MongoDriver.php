@@ -39,7 +39,7 @@ class MongoDriver implements iDBDriver {
       $this->database->$table->save($model);
     } // end if-else
     
-    return json_encode($model, JSON_PRETTY_PRINT);
+    return $model->_id;
   } // end function
   
   
@@ -51,12 +51,8 @@ class MongoDriver implements iDBDriver {
   public function find($table, array $predicates = array(), $limit = 10, $skip = 0, $sort = array('_id' => 1)) {
     $result = array();
     $cursor = $this->database->$table->find($predicates)->sort($sort)->skip($skip)->limit($limit);
-    foreach ($cursor as $c) {
-      $model = new $c['class']();
-      $model->loadFromJson($c);
-      $result[] = $model;
-    }
-    print_r($result);
+    foreach ($cursor as $c) 
+      $result[] = $c;
     return json_encode($result, JSON_PRETTY_PRINT);
   } // end function
   

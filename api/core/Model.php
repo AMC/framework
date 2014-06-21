@@ -30,6 +30,11 @@ class Model extends ReflectiveObject {
     $this->database = $database;
   } // end function
   
+  
+  public function setId($id) {
+    $this->_id = new MongoId($id);
+  }
+  
 
   public function isValid() {
     // Iterate through components and delegate validation
@@ -46,8 +51,7 @@ class Model extends ReflectiveObject {
     if (!$this->isValid())
       return false;
     
-    $json = $this->database->save($this->getClass(), json_encode($this, JSON_PRETTY_PRINT));
-    $this->load($json);
+    $this->_id = $this->database->save($this->getClass(), json_encode($this, JSON_PRETTY_PRINT));
     
     return true;
   } // end function
@@ -60,9 +64,9 @@ class Model extends ReflectiveObject {
           // TODO: verify object is a component
           $this->$key = new $value->class();
           $this->$key->setProperties((array)$value);
-        } else 
+        } else { 
           $this->$key = $value;
-
+        } // end if-else
   } // end function
   
   
