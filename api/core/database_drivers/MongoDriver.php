@@ -25,7 +25,7 @@ class MongoDriver implements iDBDriver {
     
     $this->connection = new MongoClient("", $options);
     $this->database = $this->connection->$database_config['database'];
-  } // end __construct() function
+  } // end function
   
   
   public function save($table, $json) {
@@ -33,9 +33,12 @@ class MongoDriver implements iDBDriver {
     $model = json_decode($json);
     
     if (is_null($model->_id)) {
+      // create a new MongoId
       $model->_id = new MongoId();
       $this->database->$table->insert($model);
     } else {
+      // recast the id from a stdObject to a MongoId
+      $model->_id = new MongoId($model->_id->{'$id'});
       $this->database->$table->save($model);
     } // end if-else
     

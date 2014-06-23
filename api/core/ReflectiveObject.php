@@ -16,21 +16,22 @@ abstract class ReflectiveObject implements JsonSerializable {
     $this->reflectionClass      = new ReflectionClass(get_called_class());
     $this->reflectionMethods    = $this->reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED);
     $this->relfectionProperties = $this->reflectionClass->getProperties(ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED);
-  } // end init() function
+  } // end function
+  
   
   public function JsonSerialize() {
     return $this->getProperties();
-  } // end JsonSerialize() function
+  } // end function
   
   
   public function __toString() {
     return json_encode($this, JSON_PRETTY_PRINT);
-  } // end __toString() function
+  } // end function
   
   
   public function getClass() {
     return get_called_class();
-  } // end getClass() function
+  } // end function
   
   
   public function getMethods() {
@@ -42,7 +43,7 @@ abstract class ReflectiveObject implements JsonSerializable {
       $result[] = $m->name;
     
     return $result;
-  } // end getMethods() function
+  } // end function
   
   
   public function getMethodParameters($method) {
@@ -65,10 +66,10 @@ abstract class ReflectiveObject implements JsonSerializable {
       
       $result[$p->getName()]['isArray']     = $p->isArray();
       $result[$p->getName()]['isOptional']  = $p->isOptional();
-    }
+    } // end foreach
     
     return $result;
-  } // end getMehodParameters() function
+  } // end function
   
   
   public function getProperty($property) {
@@ -78,7 +79,7 @@ abstract class ReflectiveObject implements JsonSerializable {
       return false;
     
     return $this->$property;
-  }
+  } // end function
   
   
   public function getProperties() {
@@ -93,7 +94,7 @@ abstract class ReflectiveObject implements JsonSerializable {
     }
     return $result;
 
-  } // end getProperties() function
+  } // end function
   
   
   public function setProperty($property, $value) {
@@ -102,9 +103,12 @@ abstract class ReflectiveObject implements JsonSerializable {
     if (!$this->reflectionClass->hasProperty($property))
       return false;
       
-    $this->$property = $value;
+    if (is_a($this->$property, 'Component'))
+      $this->$property->setProperty('value', $value);
+    else
+      $this->$property = $value;
     return true;      
-  } // end setProperty() function
+  } // end function
 
 
   public function setProperties(array $properties) {
@@ -113,6 +117,6 @@ abstract class ReflectiveObject implements JsonSerializable {
     foreach ($properties as $key => $value)
       $this->setProperty($key, $value);
     
-  } // end setProperties() function
+  } // end function
   
 }

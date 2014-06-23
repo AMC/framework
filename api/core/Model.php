@@ -1,29 +1,22 @@
 <?php
 
-class Model extends ReflectiveObject {
+abstract class Model extends ReflectiveObject {
   
+  // permission levels
   const IS_PRIVATE = 1;
   const IS_GROUP   = 2;
   const IS_PUBLIC  = 4;
 
 
-  protected $use_default_controller = true;
+  // if true, does not require a custom controller
+  protected $use_default_controller = false;
+
 
   protected $_id          = NULL;
   protected $groups       = array();
-  protected $created      = NULL;
-  protected $updated      = NULL;
-  protected $visibility   = Model::IS_PRIVATE;
-  
-  protected $data;
-  
-  private   $database;
-  
-  public function __construct() {
+  protected $permission   = Model::IS_PRIVATE;  
     
-    $this->data = new Component();
-    $this->data->setProperty("value", "pirates");
-  } // end function
+  private   $database;
   
   
   public function setDatabase($database) {
@@ -33,23 +26,24 @@ class Model extends ReflectiveObject {
   
   public function setId($id) {
     $this->_id = new MongoId($id);
-  }
+  } // end function
   
 
   public function isValid() {
     // Iterate through components and delegate validation
     foreach ($this->getProperties() as $key => $value)     
-      if (is_a($value, 'Component')) 
+      if (is_a($value, 'Component')) {
+        $value->clean();
         if (!$value->isValid())
           return false;
-
+      } // end if
     return true;
   } // end function
   
     
   public function save() {
     if (!$this->isValid())
-      return false;
+      throw new Exception('Cannot save invalid model: ' . $this->getClass());
     
     $this->_id = $this->database->save($this->getClass(), json_encode($this, JSON_PRETTY_PRINT));
     
