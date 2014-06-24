@@ -47,6 +47,9 @@ class MongoDriver implements iDBDriver {
   
   
   public function delete($table, array $predicates = array()) {
+    if (array_key_exists("_id", $predicates))
+      $predicates["_id"] = new MongoId($predicates['_id']);
+
     $this->database->$table->remove($predicates);
   } // end function
   

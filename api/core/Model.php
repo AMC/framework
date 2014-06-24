@@ -8,15 +8,16 @@ abstract class Model extends ReflectiveObject {
   const IS_PUBLIC  = 4;
 
 
-  // if true, does not require a custom controller
-  protected $use_default_controller = false;
-
-
   protected $_id          = NULL;
   protected $groups       = array();
   protected $permission   = Model::IS_PRIVATE;  
     
   private   $database;
+  
+  
+  // return true or false
+  // if true, does not require a custom controller
+  abstract public function useDefaultController();
   
   
   public function setDatabase($database) {
@@ -43,7 +44,7 @@ abstract class Model extends ReflectiveObject {
     
   public function save() {
     if (!$this->isValid())
-      throw new Exception('Cannot save invalid model: ' . $this->getClass());
+      return false;
     
     $this->_id = $this->database->save($this->getClass(), json_encode($this, JSON_PRETTY_PRINT));
     

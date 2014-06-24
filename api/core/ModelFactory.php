@@ -10,11 +10,13 @@ class ModelFactory {
   } // end __construct() public function
   
   
-  public function newModel($model, array $params = array()) {
-    // TODO: check if model exists
-    $model = new $model();
+  public function newModel($model_name, array $params = array()) {
+    if (!class_exists($model_name))
+      return false;  // throw exception
+      
+    $model = new $model_name();
     $model->setDatabase($this->database);
-    // TODO: set params using $model->setParameters($params);
+    $model->setProperties($params);
     return $model;
   } // end function
   
@@ -22,7 +24,7 @@ class ModelFactory {
   public function find($model, array $predicates = array(), $limit = 10, $offset = 0, array $sort = array()) {
     $result = array();
     $json = $this->database->find($model, $predicates, $limit, $offset, $sort);
-    //print_r($json);
+
     foreach(json_decode($json) as $doc) {
       $model = new $doc->class();
       $model->setDatabase($this->database);

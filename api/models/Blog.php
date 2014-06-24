@@ -1,13 +1,18 @@
 <?php
 
 class Blog extends Model {
-  protected $use_default_controller = false;
   
   protected $author;
   protected $date;
   protected $tags;
   protected $post;
   protected $comments;
+
+
+  public function useDefaultController() {
+    return true;
+  } // end function
+    
   
   public function __construct() {
     $this->permission = Model::IS_GROUP;    
@@ -46,4 +51,5 @@ class Blog extends Model {
       throw new Exception('Cannot add invalid comment: ' . $comment);
   } // end function
   
+
 }

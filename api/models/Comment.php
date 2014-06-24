@@ -6,6 +6,12 @@ class Comment extends Model {
   protected $date;
   protected $comment;
   
+  
+  public function useDefaultController() {
+    return false;
+  } // end function
+  
+  
   public function __construct() {
     $this->author = new String();
     $this->author->setProperty('required', true);
