@@ -1,3 +1,4 @@
+<head>
 <style>
   input, 
   textarea {
@@ -43,40 +44,110 @@
     top: 0;
     left: 0;
   }
+  
+  .error {
+    border: 1px solid darkred;
+    background: red;
+    color: white;
+  }
+  
+  .ok {
+    border: 1px solid darkgreen;
+    background: green;
+    color: white;
+  }
 </style>
+</head>
 
-<div id='admin'>
-  >>
-</div>
+<body onload='onload()'>
 
-<form action='index.php' method='post'>
-  <h2>New</h2>
-  <input type='input' name='author' placeholder='author' value='Andrew Canfield'>
-  <input type='date' name='date' placeholder='date' value='2014-06-24'>
-  <input type='input' name='tags' placeholder='tags' value='this, that, other'>
-  <textarea name='post' placeholder='post'>Hello World</textarea>
-  <input type='submit' value='submit'>
-</form>
-
-<form action='index.php' method='delete'>
-  <h2>Delete</h2>
-  <input type='input' name='_id' placeholder='_id' >
-  <input type='submit' value='submit'>
-</form>
-
-<form action='index.php' method='put'>
-  <h2>Update</h2>
-  <input type='input' name='_id' placeholder='_id' >
-  <input type='input' name='author' placeholder='author' value='Andrew Canfield'>
-  <textarea name='post' placeholder='post'>Hello World</textarea>
-  <input type='submit' value='submit'>
-</form>
+  <div id='editor'>
+  </div>
 
 <script>
-xmlhttp = new XMLHttpRequest();
-xmlhttp.open("OPTIONS","thesis.andrewcanfield.com", true);
-xmlhttp.send();
-console.log(xmlhttp.responseText);
+
+function Component(name, value, type, required, validation) {
+  this.name       = name;
+  this.value      = value;
+  this.type       = type;
+  this.required   = required;
+  this.validation = validation.toString().replace(/\//g, '');
+
+  
+}
+
+Component.prototype.isValid = function() {
+  if (this.required && this.value.length == 0)
+    return false;
+    
+  var regex = new RegExp(this.validation);
+  
+  return regex.test(this.value);
+}
+
+Component.prototype.toString = function() {
+  return this.value;
+}
+
+Component.prototype.edit = function() {
+  var result  = "";
+  
+  result += "<label for='" + this.name + "' ";
+  result += "class='" + this.type + "' ";
+  result += ">" + this.name + " </label>";
+  
+  result += "<input type='text' ";
+  result += "name='" + this.name + "' ";
+  result += "placeholder='" + this.name + "' ";
+  result += "class='" + this.type + "' ";
+  result += "data-validation='" + this.validation + "' ";
+  result += "onkeyup='checkIfValid.call(this)' ";
+  result += "/>";
+  
+  return result;
+}
+
+function checkIfValid() {
+  // apply to each edit box
+
+  var regex = new RegExp(this.dataset.validation);
+
+  if (regex.test(this.value)) {
+    this.classList.add("ok");
+    this.classList.remove("error");
+  } else { 
+    this.classList.add("error");
+    this.classList.remove("ok");
+  }
+
+  console.log(this);
+}
+
+
+function Model(endpoint) {
+  this.endpoint = endpoint;
+  this.json = null;
+}
+
+Model.prototype.new = function() {
+  this.json = "hello world";
+  jsonRequest = new XMLHttpRequest();
+  jsonRequest.onreadystatechange = function() {
+    if (jsonRequest.readyState == 4)
+      alert(JSON.parse(jsonRequest.responseText));
+  }
+  jsonRequest.open("OPTIONS", this.endpoint, true);
+  jsonRequest.send();
+}
+
+function onload() {
+  document.getElementById("editor").innerHTML += c.edit();
+}
+
+var m = new Model("http://thesis.andrewcanfield.com");
+
+var c = new Component("Author", "123", "Integer", true, /^\d+$/);
 
 </script>
 
+</body>

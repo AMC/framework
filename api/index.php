@@ -1,4 +1,3 @@
-<pre>
 <?php
   $controller_name = 'Blog';
   $method = $_SERVER['REQUEST_METHOD'];
