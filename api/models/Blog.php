@@ -3,6 +3,7 @@
 class Blog extends Model {
   
   protected $author;
+  protected $title;
   protected $date;
   protected $tags;
   protected $post;
@@ -19,6 +20,9 @@ class Blog extends Model {
     
     $this->author = new String();
     $this->author->setProperty('required', true);
+    
+    $this->title = new String();
+    $this->title->setProperty('required', true);
     
     $this->date = new Date();
     $this->date->setProperty('required', true);

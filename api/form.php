@@ -67,6 +67,7 @@
 <script>
 
 function Component(name, value, type, required, validation) {
+  console.log("component\n");
   this.name       = name;
   this.value      = value;
   this.type       = type;
@@ -124,12 +125,66 @@ function checkIfValid() {
 }
 
 
-function Model(endpoint) {
-  this.endpoint = endpoint;
-  this.json = null;
+function Model(obj) {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      if(!obj[key] && typeof(obj[key]) === 'object') {
+        console.log("obj: " + obj[key]);
+        this[key] = new Component(obj[key]['name'], obj[key]['value'], obj[key]['class'], obj[key]['required'], "/^.{0,255}$/");
+      }
+    }
+  }
+  
+
+//  var keys = Object.key(obj);
+//  console.log(keys);
 }
 
-Model.prototype.new = function() {
+
+Model.prototype.viewNew = function () {
+  
+}
+
+
+Model.prototype.viewEdit = function () {
+  
+}
+
+
+Model.prototype.viewDetail = function () {
+  
+}
+
+
+function ModelFactory(endpoint) {
+  this.endpoint = endpoint;
+  this.response = null;
+  
+}
+
+ModelFactory.prototype.editView = function() {
+  
+}
+
+
+ModelFactory.prototype.getOptions = function() {
+  request = new XMLHttpRequest();
+  request.open("OPTIONS", this.endpoint, true);
+  
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+      var response = JSON.parse(request.responseText);
+      window.m = new Model(response.data);
+    }
+      
+  }
+  
+  request.send();
+}
+
+ModelFactory.prototype.new = function() {
+
+/*
   this.json = "hello world";
   jsonRequest = new XMLHttpRequest();
   jsonRequest.onreadystatechange = function() {
@@ -138,15 +193,19 @@ Model.prototype.new = function() {
   }
   jsonRequest.open("OPTIONS", this.endpoint, true);
   jsonRequest.send();
+*/
 }
 
 function onload() {
   document.getElementById("editor").innerHTML += c.edit();
 }
 
-var m = new Model("http://thesis.andrewcanfield.com");
-
+var mf = new ModelFactory("http://thesis.andrewcanfield.com");
+//var m = new Model("http://thesis.andrewcanfield.com");
 var c = new Component("Author", "123", "Integer", true, /^\d+$/);
+
+mf.getOptions();
+mf.editView();
 
 </script>
 
