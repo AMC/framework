@@ -5,7 +5,6 @@ class Blog extends Model {
   protected $author;
   protected $title;
   protected $date;
-  protected $tags;
   protected $post;
   protected $comments;
 
@@ -30,21 +29,7 @@ class Blog extends Model {
     $this->post = new RichText();
     $this->post->setProperty('required', true);
 
-    $this->tags = array();
     $this->comments = array(); 
-  } // end function
-
-  
-  public function addTag($tag) {
-    $t = new Tag();
-    $t->setProperty('value', $tag);
-    $t->clean();
-    
-    if ($t->isValid())
-      $this->tags[] = $t;
-    else
-      throw new Exception('Cannot add invalid tag: ' . $tag);  
-
   } // end function
 
   

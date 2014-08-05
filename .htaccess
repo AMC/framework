@@ -1,0 +1,39 @@
+# Disallow Directory Listings
+Options -Indexes
+
+RewriteEngine On
+
+# API
+# :controller
+RewriteCond %{REQUEST_METHOD} ^(OPTIONS|PUT|DELETE|POST|GET)
+RewriteCond %{HTTP:X-Requested-With} !^$ 
+RewriteRule ^(.*)/?$ api/index.php [L,E=CONTROLLER:$1]
+
+# API
+# :controller:id
+RewriteCond %{REQUEST_METHOD} ^(OPTIONS|PUT|DELETE|POST|GET)
+RewriteCond %{HTTP:X-Requested-With} !^$ 
+RewriteRule ^(.*)/(.*)/?$ api/index.php [L,E=CONTROLLER:$1,E=ID:$2]
+
+# CORS preflight
+RewriteCond %{REQUEST_METHOD} ^OPTIONS
+RewriteRule ^.*$ api/index.php [L,E=CORS:TRUE]
+
+# Block all Request Methods not directed to API
+RewriteCond %{REQUEST_METHOD} ^(OPTIONS|PUT|DELETE|POST)
+RewriteRule .* - [F]
+
+# Mobile Client
+RewriteCond %{HTTP_USER_AGENT} iphone|ipad|android|blackberry [NC]
+RewriteCond %{REQUEST_METHOD} ^GET
+RewriteCond %{HTTP:X-Requested-With} ^$ 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteRule ^(.*)$ mobile/index.php?$1 [QSA,L]
+
+
+# Web Client
+RewriteCond %{REQUEST_METHOD} ^GET
+RewriteCond %{HTTP:X-Requested-With} ^$ 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteRule ^(.*)$ web/index.php?$1 [QSA,L]
+

@@ -6,6 +6,7 @@ class Response {
     $result = array();
     $result['status'] = 'success';
     $result['status_code'] = '200';
+    $result['method'] = $_SERVER['REQUEST_METHOD'];
     $result['data'] = $data;
 
     echo json_encode($result, JSON_PRETTY_PRINT);

@@ -18,7 +18,7 @@ class Controller {
   
   
   public function get() {
-    // TODO: get parameters for search
+    // TODO: get parameters for id
     // TODO: only show information appropiate to user
         
     return $this->model_factory->find($this->model_name);
