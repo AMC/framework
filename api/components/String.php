@@ -6,7 +6,7 @@ class String extends Component {
     $this->value      = NULL;
     $this->type       = new DataType("String");
     $this->required   = false;
-    $this->validation = '/^.{0,255}$/';
+    $this->validation = '^(\w|\d|\s){1,255}$';
 
   } // end __construct() function
 }

@@ -15,18 +15,18 @@ class Blog extends Model {
     
   
   public function __construct() {
-    $this->permission = Model::IS_GROUP;    
+    $this->permission = 'private';    
     
     $this->author = new String();
     $this->author->setProperty('required', true);
-    
+        
     $this->title = new String();
     $this->title->setProperty('required', true);
-    
+
     $this->date = new Date();
     $this->date->setProperty('required', true);
  
-    $this->post = new RichText();
+    $this->post = new TextArea();
     $this->post->setProperty('required', true);
 
     $this->comments = array(); 

@@ -6,7 +6,7 @@ class Tag extends Component {
     $this->value      = NULL;
     $this->type       = new DataType("String");
     $this->required   = false;
-    $this->validation = '/^.{0,255}$/';
+    $this->validation = '^.{0,255}$';
   } // end function
   
 } // end class

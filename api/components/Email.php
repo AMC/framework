@@ -6,7 +6,7 @@ class Email extends Component {
     $this->value      = NULL;
     $this->type       = new DataType("String");
     $this->required   = false;
-    $this->validation = '/^.+@.+\..+$/';
+    $this->validation = '^.+@.+\..+$';
 
   } // end __construct() function
 }

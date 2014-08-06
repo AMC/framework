@@ -25,7 +25,7 @@ require_once 'components/Decimal.php';
 require_once 'components/Email.php';
 require_once 'components/Number.php';
 require_once 'components/Phone.php';
-require_once 'components/RichText.php';
+require_once 'components/TextArea.php';
 require_once 'components/String.php';
 require_once 'components/Tag.php';
 require_once 'components/Text.php';

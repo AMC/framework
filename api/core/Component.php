@@ -10,7 +10,7 @@ abstract class Component extends ReflectiveObject {
   public function __construct() {
     $this->value      = NULL;
     $this->required   = false;
-    $this->validation = '/^.*$/';
+    $this->validation = '^.*$';
   } // end function
 
 
@@ -24,7 +24,7 @@ abstract class Component extends ReflectiveObject {
     if ($this->required && is_null($this->value))
       return false;
     
-    if (!preg_match($this->validation, $this->value))
+    if (!preg_match('/' . $this->validation . '/', $this->value))
       return false;
       
     return true;

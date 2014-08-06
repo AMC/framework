@@ -3,14 +3,11 @@
 abstract class Model extends ReflectiveObject {
   
   // permission levels
-  const IS_PRIVATE = 1;
-  const IS_GROUP   = 2;
-  const IS_PUBLIC  = 4;
-
+  // private, group, public
 
   protected $_id          = NULL;
   protected $groups       = array();
-  protected $permission   = Model::IS_PRIVATE;  
+  protected $permission   = 'private';  
     
   private   $database;
   

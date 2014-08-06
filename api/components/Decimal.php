@@ -6,7 +6,7 @@ class Decimal extends Component {
     $this->value      = NULL;
     $this->type       = new DataType("Decimal");
     $this->required   = false;
-    $this->validation = '/^\d*\.\d*$/';
+    $this->validation = '^\d*\.\d*$';
 
   } // end __construct() function
 }

@@ -6,7 +6,7 @@ class Date extends Component {
     $this->value      = NULL;
     $this->type       = new DataType("String");
     $this->required   = false;
-    $this->validation = '/^\d{4}-\d{2}-\d{2}$/';   // yyyy-mm-dd
+    $this->validation = '^\d{4}-\d{2}-\d{2}$';   // yyyy-mm-dd
 
   } // end __construct() function
   

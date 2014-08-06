@@ -1,8 +1,10 @@
 <?php
-  $controller_name = 'Blog';
+
+  //$controller_name = 'Blog';
+  $controller_name = $_SERVER['CONTROLLER'];
   $method = strtolower($_SERVER['REQUEST_METHOD']);
-  //$method = 'GET';
-  
+
+
 
   require_once 'config/includes.php';
   // TODO: authenticate request
@@ -12,6 +14,8 @@
   
   $model_factory = new ModelFactory($database);
   $controller_factory = new ControllerFactory($model_factory);
+
+  $controller = $controller_factory->get($controller_name);
   
   // TODO: check authorization
   if ($controller = $controller_factory->get($controller_name)) {
@@ -23,7 +27,3 @@
   } else {
     Response::fail();
   }
-
-
-
-

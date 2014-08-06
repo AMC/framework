@@ -2,3 +2,7 @@
   white-space: pre;
   font-family: monospace;
 }
+
+span[data-name='title'] {
+  font-weight: bold;
+}

@@ -6,7 +6,7 @@ class Phone extends Component {
     $this->value      = NULL;
     $this->type       = new DataType("String");
     $this->required   = false;
-    $this->validation = '/^\d{3}-\d{3}-\d{4}$/';
+    $this->validation = '^\d{3}-\d{3}-\d{4}$';
 
   } // end __construct() function
   

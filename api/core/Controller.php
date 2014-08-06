@@ -20,14 +20,17 @@ class Controller {
   public function get() {
     // TODO: get parameters for id
     // TODO: only show information appropiate to user
-        
+
     return $this->model_factory->find($this->model_name);
   } // end function
   
   
   // non-idempotent
   public function post() {
-    parse_str(file_get_contents('php://input'), $params);
+    // mod_rewrite strips post content, must use query string
+    // parse_str(file_get_contents('php://input'), $params);
+    $params = $_GET;
+
     
     $model = $this->model_factory->newModel($this->model_name, $params);
 
@@ -39,7 +42,9 @@ class Controller {
   
   
   public function put() {
-    parse_str(file_get_contents('php://input'), $params);
+    // mod_rewrite strips post content, must use query string
+    // parse_str(file_get_contents('php://input'), $params);
+    $params = $_GET;
 
     if (!array_key_exists('_id', $params))
       return false;
@@ -53,7 +58,7 @@ class Controller {
   
   
   public function delete() {
-    parse_str(file_get_contents('php://input'), $params);
+    $params = $_GET;
 
     if (!array_key_exists('_id', $params))
       return false;

@@ -1,12 +1,12 @@
 <?php
 
-class RichText extends Component {
+class TextArea extends Component {
   
   public function __construct() {
     $this->value      = NULL;
     $this->type       = new DataType("String");
     $this->required   = false;
-    $this->validation = '/^.*$/';
+    $this->validation = '^.*$';
 
   } // end __construct() function
   

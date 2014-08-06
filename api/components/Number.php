@@ -6,7 +6,7 @@ class Number extends Component {
     $this->value      = NULL;
     $this->type       = new DataType("Integer");
     $this->required   = false;
-    $this->validation = '/^\d+$/';
+    $this->validation = '^\d+$';
 
   } // end __construct() function
 }

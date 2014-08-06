@@ -91,3 +91,11 @@ body {
 .cg_sublist {
   color: #999;
 }
+
+.cg_submitted {
+  display: none;
+}
+
+.cg_deleted {
+  display: none;
+}

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="lib/normalize.css">
   <link rel="stylesheet" href="lib/web.css">
   <link rel="stylesheet" href="web/styles/web.css">
-  
+
 </head>
 
 
@@ -22,18 +22,13 @@
   <div id='controls'>
     <h1>Web</h1>
     
-    <input id='id' type='text' placeholder='id'>
+
     <button id='getButton' class='cg_button'>Blogs</button>
     <button id='newButton' class='cg_button'>New</button>
-    
-    <button id='post' class='cg_button'>post</button>
-    <button id='put' class='cg_button'>put</button>
-    <button id='delete' class='cg_button'>delete</button>
 
   </div>
   
-  <div id='response'>
-  </div>
+  <div id='response'></div>
 
 
   <script src="lib/candygram.js"></script>
@@ -41,12 +36,12 @@
 
   <script>
     document.querySelector("#getButton").onclick = function() {
-      var endpoint = 'http://thesis.andrewcanfield.com/framework';
-      var id = document.querySelector("#id").value;
+      var endpoint = 'http://thesis.andrewcanfield.com/framework/Blog';
+      //var id = document.querySelector("#id").value;
       var properties = ["author", "title", "post"];
       var outputSelector = '#response';
       
-      get(endpoint, id)
+      get(endpoint)
         .then(
           function(response) {
             //listView(endpoint, outputSelector, response, properties);
@@ -59,7 +54,7 @@
   
   
     document.querySelector("#newButton").onclick = function() {
-      var endpoint = 'http://thesis.andrewcanfield.com/framework';
+      var endpoint = 'http://thesis.andrewcanfield.com/framework/Blog';
       var method = 'post';
       var outputSelector = '#response';
 

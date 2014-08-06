@@ -5,32 +5,8 @@
 
 
 
-
-
-
-
-document.querySelector("#post").onclick = function() {
-  post()
-    .then(function(response) {
-      console.log(response);
-    })
-};
-
-document.querySelector("#put").onclick = function() {
-  put()
-    .then(function(response) {
-      console.log(response);
-    })
-};
-
-document.querySelector("#delete").onclick = function() {
-  del()
-    .then(function(response) {
-    console.log(response);
-  });
-};
-
 // remove?
+/*
 function createGetButton(endpoint, buttonText, buttonSelector, outputSelector, inputSelector) {
   var buttonOutputElement = document.querySelector(buttonSelector);
   var outputElement = document.querySelector(outputSelector);
@@ -58,6 +34,7 @@ function createGetButton(endpoint, buttonText, buttonSelector, outputSelector, i
   
   buttonOutputElement.appendChild(button);
 }
+*/
 
 
 function detailView(selector, endpoint, id) {
@@ -68,12 +45,16 @@ function detailView(selector, endpoint, id) {
 
 
 function createForm(endpoint, method, data, outputSelector) {
+  //endpoint = 'http://thesis.andrewcanfield.com/framework/Blog';
+  
   var outputElement = document.querySelector(outputSelector);
     outputElement.innerHTML = "";
     
   var form = document.createElement('form');
     form.action = endpoint;
     form.method = method;
+    form.enctype = "multipart/form-data";
+    
     form.onsubmit = function() {
       return false;
     }
@@ -109,91 +90,70 @@ function createForm(endpoint, method, data, outputSelector) {
   form.appendChild(label);
   form.appendChild(visibility);
   
-  console.log(data);
-  
   for (key in data) {
     var component = data[key];
-    console.log(key, component);
     
     if (!isObject(component))
       continue;
       
-    console.log('.');
     var label = document.createElement("label");
       label.setAttribute('for', key);
       label.appendChild(document.createTextNode(key));
 
-    console.log('.');
-    console.log(component.type);
-    if (component.type.toLowerCase() === 'textarea') {
-      console.log('*');
+    if (component['class'].toLowerCase() === 'textarea') {
       var element = document.createElement('textarea');
-      if (component.value !== "null")
+      if (component.value !== null)
         element.appendChild(document.createTextNode(component.value));
     } else {
-      console.log('#');
       var element = document.createElement('input');  
 
-      if (component.value !== "null")
+      if (component.value !== null)
         element.value = component.value;
     }
 
-    console.log('.');
     element.id = key;
     element.name = key;
     element.pattern = component.validation;
 
-    console.log('.');
     element.onkeyup = function() {
       var regex = new RegExp(this.pattern);
       if (regex.test(this.value)) {
-        this.classList.remove('error');
-        this.classList.add('success');
+        this.classList.remove('cg_fail');
+        this.classList.add('cg_success');
       } else {
-        this.classList.remove('success');
-        this.classList.add('error');
+        this.classList.remove('cg_success');
+        this.classList.add('cg_fail');
       }
     };
 
-    console.log('.');
     element.onchange = function() {
       var regex = new RegExp(this.pattern);
       if (regex.test(this.value)) {
-        this.classList.remove('error');
-        this.classList.add('success');
+        this.classList.remove('cg_fail');
+        this.classList.add('cg_success');
       } else {
-        this.classList.remove('success');
-        this.classList.add('error');
+        this.classList.remove('cg_success');
+        this.classList.add('cg_fail');
       }
     };
 
-    console.log('.');
-    element.type = component.type;
+    element.type = component['class'];
     element.classList.add('cg_input');
 
-    console.log('.');
     form.appendChild(label);
     form.appendChild(element);
   }
     
   var button = document.createElement("button");
-    button.appendChild(document.createTextNode('submit'));
+    button.appendChild(document.createTextNode('save'));
     button.classList.add('cg_button');
     
     button.onclick = function() {
-      // get method
-      // send data
-      var formData = new FormData(this.form);
-      console.log(formData);
-      
-      this.disabled = true;
+      post(this.form);
+      this.form.classList.add('cg_submitted');
     }
   
-  
-  console.log(button);
   form.appendChild(button);
-  
-  console.log('fin');
 }
 
 

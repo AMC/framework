@@ -3,17 +3,24 @@ Options -Indexes
 
 RewriteEngine On
 
-# API
-# :controller
-RewriteCond %{REQUEST_METHOD} ^(OPTIONS|PUT|DELETE|POST|GET)
-RewriteCond %{HTTP:X-Requested-With} !^$ 
-RewriteRule ^(.*)/?$ api/index.php [L,E=CONTROLLER:$1]
+# API 
+# Final
+RewriteRule ^api/index.php/(\w+)/(\w+)/? api/index.php [L,NC,QSA,E=CONTROLLER:$1,E=ID:$2]
 
 # API
 # :controller:id
 RewriteCond %{REQUEST_METHOD} ^(OPTIONS|PUT|DELETE|POST|GET)
 RewriteCond %{HTTP:X-Requested-With} !^$ 
-RewriteRule ^(.*)/(.*)/?$ api/index.php [L,E=CONTROLLER:$1,E=ID:$2]
+RewriteCond %{REQUEST_URI} !index.php
+RewriteRule ^/?(.*)/(.*)/?$ api/index.php/$1/$2 [QSA,L]
+
+# API
+# :controller
+RewriteCond %{REQUEST_METHOD} ^(OPTIONS|PUT|DELETE|POST|GET)
+RewriteCond %{HTTP:X-Requested-With} !^$ 
+RewriteCond %{REQUEST_URI} !index.php
+RewriteRule ^/?(.*)/?$ api/index.php/$1/NULL [QSA,L]
+
 
 # CORS preflight
 RewriteCond %{REQUEST_METHOD} ^OPTIONS
